@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>アクセスカウンター</title>
+</head>
+<body>
+  <h1>あなたは <span id="count">?</span> 人目の訪問者です</h1>
+  <script>
+    fetch("/api/visits", { method: "POST" })
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById("count").textContent = data.count;
+      });
+  </script>
+</body>
+</html>
